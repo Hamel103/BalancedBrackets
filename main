@@ -55,25 +55,16 @@ class TestClass {
         
         for (int i=0; i<myString.length(); i++)
         {
-            if (i >= 1)
-            {
-                if (myString.charAt(i-1) == ')' && myString.charAt(i) == '(')
-                {
-                    countOpen = 0;
-                    countClosed = 0;
-                }
-            }
-            
-            if (myString.charAt(i) == '('){
+            if (myString.charAt(i) == '(' && i <= (myString.length()/2)){
                 countOpen += 1;
             }
-            else if (myString.charAt(i) == ')'){
+            else if (myString.charAt(i) == ')' && (myString.length()/2) <= i){
                 countClosed += 1;
             }
-            
-            if (countClosed <= countOpen && largestCount < (countClosed*2)){
-                largestCount = countClosed*2;
-            }
+        }
+        
+        if (countClosed <= countOpen){
+            largestCount = countClosed*2;
         }
         
         return largestCount;
